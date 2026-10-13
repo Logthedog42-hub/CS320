@@ -1,1 +1,14 @@
 # CS320
+Project One contact service (Contact.java, ContactService.java, ContactTest.java, ContactServiceTest.java) and my Project Two Summary and Reflections Report.
+
+**How can I ensure that my code, program, or software is functional and secure?**
+
+I can't just run my code once and see if it works. I have to test it on purpose, and I have to try to break it. In Project One I wrote a JUnit test for every requirement sentence, and most of them were bad input tests. IDs that were null or one character too long, phone numbers that were too short or too long, and addresses over the limit all had to throw an IllegalArgumentException. Checking the edges like that is also a basic security habit, because code that rejects bad input at the door is much harder to abuse. I used coverage as a check on my own work too. My first full run was 79.3 percent, and the report showed that the setters in Contact and Task had validation that none of my tests had ever triggered. After I added tests for them, those classes hit 100 percent and the whole project came in at 80.2 percent. Coverage doesn't prove the code is right, though. My phone check only makes sure the length is 10, so a phone number of letters would still pass. Seeing that gap taught me that testing is never really finished. The Knight Capital and Ariane 5 examples from class showed me what happens when nobody is careful about this stuff.
+
+**How do I interpret user needs and incorporate them into a program?**
+
+I start by reading the requirements slowly and breaking them into small pieces I can check, like "first name cannot be longer than 10 characters and cannot be null." Each piece becomes a field rule in the code and a test, so I can point to the test that proves a need was met. I also put the requirement text in a comment at the top of each class so the code and the tests stay close to what the user asked for. If a requirement is vague, I'd rather ask or write down my assumption than guess and build the wrong thing, because a feature that works perfectly but isn't what the user wanted is still a defect.
+
+**How do I approach designing software?**
+
+I like to start small and build one piece at a time. In this course I built Contact, then ContactService, tested each one, and only then moved on to Task and Appointment, which followed a similar pattern. I try to keep each class focused on one job, like keeping the validation inside the object itself and keeping the add, delete, and update logic in the service. A HashMap keyed by ID made lookups simple, and a private helper method kept me from repeating the "not found" check in every update method. I also think about how I'll test something while I design it, because code that is split into small, clear pieces is much easier to test. I try not to cut corners, since shortcuts turn into technical debt that costs more to fix later.
